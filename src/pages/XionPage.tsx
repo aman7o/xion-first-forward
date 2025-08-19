@@ -4,19 +4,58 @@ import { ScrollReveal } from '@/components/ScrollReveal';
 import { Particles } from '@/components/Particles';
 import { CounterAnimation } from '@/components/CounterAnimation';
 import { ChevronDown, ExternalLink, Twitter, MessageCircle } from 'lucide-react';
+import xionLogo from '@/assets/xion-logo.png';
+import { SmoothScrollLink } from '@/components/SmoothScrollLink';
+import investorsLogos from '@/assets/investors-logos.png';
 
 const XionPage = () => {
   return (
     <div className="min-h-screen bg-background">
+      {/* Navigation Header */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border-subtle">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="flex items-center">
+            <img src={xionLogo} alt="XION" className="h-8" />
+          </div>
+          
+          <div className="hidden md:flex space-x-8 text-sm">
+            <SmoothScrollLink to="#consumer" className="text-text-muted hover:text-electric-blue">
+              Consumer Blockchain
+            </SmoothScrollLink>
+            <SmoothScrollLink to="#walletless" className="text-text-muted hover:text-electric-blue">
+              Walletless
+            </SmoothScrollLink>
+            <SmoothScrollLink to="#gasless" className="text-text-muted hover:text-electric-blue">
+              Gasless
+            </SmoothScrollLink>
+            <SmoothScrollLink to="#compliant" className="text-text-muted hover:text-electric-blue">
+              EU Compliant
+            </SmoothScrollLink>
+            <SmoothScrollLink to="#whats-next" className="text-text-muted hover:text-electric-blue">
+              What's Next
+            </SmoothScrollLink>
+          </div>
+          
+          <Button 
+            variant="electric" 
+            size="sm"
+            onClick={() => window.open('https://xion.burnt.com', '_blank')}
+          >
+            <ExternalLink className="w-4 h-4 mr-2" />
+            Learn More
+          </Button>
+        </div>
+      </nav>
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
         <div className="particles">
           <Particles density={60} color="#00D4FF" speed={0.3} />
         </div>
         
         <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
           <div className="animate-fade-in" style={{ animationDelay: '0.5s' }}>
-            <h1 className="text-4xl font-bold mb-2 text-electric-blue-glow">XION</h1>
+            <img src={xionLogo} alt="XION Logo" className="h-16 mx-auto mb-6 opacity-90" />
           </div>
           
           <div className="animate-slide-up" style={{ animationDelay: '1s' }}>
@@ -44,7 +83,7 @@ const XionPage = () => {
       </section>
 
       {/* First Consumer Blockchain */}
-      <section className="py-20 px-6 bg-background-section">
+      <section id="consumer" className="py-20 px-6 bg-background-section">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <h2 className="text-section-title mb-12 text-center">FIRST TO LAUNCH A CONSUMER BLOCKCHAIN</h2>
@@ -122,7 +161,7 @@ const XionPage = () => {
       </section>
 
       {/* Walletless L1 */}
-      <section className="py-20 px-6 bg-background-darker">
+      <section id="walletless" className="py-20 px-6 bg-background-darker">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
@@ -179,7 +218,7 @@ const XionPage = () => {
       </section>
 
       {/* Gas Elimination */}
-      <section className="py-20 px-6 bg-background relative overflow-hidden">
+      <section id="gasless" className="py-20 px-6 bg-background relative overflow-hidden">
         <div className="particles">
           <Particles density={30} color="#00D4FF" speed={0.2} />
         </div>
@@ -246,8 +285,29 @@ const XionPage = () => {
         </div>
       </section>
 
+      {/* Investors Section */}
+      <section className="py-16 px-6 bg-background-section">
+        <div className="max-w-6xl mx-auto text-center">
+          <ScrollReveal>
+            <h3 className="text-xl font-medium text-text-muted mb-8">BACKED BY THE BEST</h3>
+          </ScrollReveal>
+          
+          <ScrollReveal delay={200}>
+            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
+              <img src={investorsLogos} alt="Top-tier investors including Multicoin, Animoca, Circle, Hashkey, Arrington Capital, Spartan" className="max-h-12" />
+            </div>
+          </ScrollReveal>
+          
+          <ScrollReveal delay={400}>
+            <p className="text-sm text-text-subtle mt-6">
+              Raised $36M from Multicoin, Animoca, Circle, Hashkey, Arrington Capital, Spartan, and more
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* MICA Compliance */}
-      <section className="py-20 px-6 bg-gradient-to-b from-blue-950/20 to-background-section">
+      <section id="compliant" className="py-20 px-6 bg-gradient-to-b from-blue-950/20 to-background-section">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <h2 className="text-section-title mb-12 text-center">FIRST EU TITLE II COMPLIANT L1 BLOCKCHAIN</h2>
@@ -454,7 +514,7 @@ const XionPage = () => {
       </section>
 
       {/* What's Next */}
-      <section className="py-32 px-6 bg-background relative overflow-hidden">
+      <section id="whats-next" className="py-32 px-6 bg-background relative overflow-hidden">
         <div className="particles">
           <Particles density={80} color="#00D4FF" speed={0.4} />
         </div>
