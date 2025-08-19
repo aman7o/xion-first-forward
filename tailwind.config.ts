@@ -18,12 +18,32 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'sans': ['Inter', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				
+				/* XION Brand Colors */
+				'background-dark': 'hsl(var(--background-dark))',
+				'background-darker': 'hsl(var(--background-darker))',
+				'background-section': 'hsl(var(--background-section))',
+				'text-primary': 'hsl(var(--text-primary))',
+				'text-secondary': 'hsl(var(--text-secondary))',
+				'text-muted': 'hsl(var(--text-muted))',
+				'text-subtle': 'hsl(var(--text-subtle))',
+				'text-faded': 'hsl(var(--text-faded))',
+				'electric-blue': 'hsl(var(--electric-blue))',
+				'electric-blue-glow': 'hsl(var(--electric-blue-glow))',
+				'electric-blue-dark': 'hsl(var(--electric-blue-dark))',
+				'hover-glow': 'hsl(var(--hover-glow))',
+				'border-subtle': 'hsl(var(--border-subtle))',
+				'border-electric': 'hsl(var(--border-electric))',
+
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -62,6 +82,16 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			backgroundImage: {
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-section': 'var(--gradient-section)',
+				'gradient-electric': 'var(--gradient-electric)',
+			},
+			boxShadow: {
+				'dramatic': 'var(--shadow-dramatic)',
+				'electric': 'var(--shadow-electric)',
+				'glow': 'var(--shadow-glow)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
