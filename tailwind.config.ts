@@ -19,7 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'sans': ['Inter', 'sans-serif'],
+				'sans': ['Open Sans', 'sans-serif'],
+				'display': ['Montserrat', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -40,6 +41,9 @@ export default {
 				'electric-blue': 'hsl(var(--electric-blue))',
 				'electric-blue-glow': 'hsl(var(--electric-blue-glow))',
 				'electric-blue-dark': 'hsl(var(--electric-blue-dark))',
+				'electric-blue-soft': 'hsl(var(--electric-blue-soft))',
+				'accent-blue': 'hsl(var(--accent-blue))',
+				'accent-gray': 'hsl(var(--accent-gray))',
 				'hover-glow': 'hsl(var(--hover-glow))',
 				'border-subtle': 'hsl(var(--border-subtle))',
 				'border-electric': 'hsl(var(--border-electric))',

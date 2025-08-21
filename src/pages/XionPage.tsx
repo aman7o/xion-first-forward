@@ -15,13 +15,13 @@ const XionPage = () => {
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       {/* Navigation Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg">
-        <div className="container mx-auto px-8 py-6">
+        <div className="container mx-auto px-8 py-8">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
               <img src={xionLogo} alt="XION" className="h-8 w-auto" />
             </div>
             
-            <nav className="hidden lg:flex items-center space-x-12">
+            <nav className="hidden lg:flex items-center space-x-16">
               <SmoothScrollLink to="consumer" className="text-white/70 hover:text-white transition-colors text-sm font-medium tracking-wider">
                 Consumer
               </SmoothScrollLink>
@@ -137,9 +137,9 @@ const XionPage = () => {
         
         <div className="container mx-auto px-8 relative z-10 max-w-7xl">
           <div className="flex items-center justify-between">
-            <div className="flex-1">
+            <div className="flex-1 pr-8">
               <ScrollReveal delay={0.8}>
-                <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-light leading-none tracking-tight mb-6">
+                <h1 className="font-display text-7xl md:text-8xl lg:text-[9rem] font-light leading-none tracking-tight mb-12">
                   A History of
                   <br />
                   <span className="font-black text-electric-blue">Firsts</span>
@@ -147,7 +147,7 @@ const XionPage = () => {
               </ScrollReveal>
               
               <ScrollReveal delay={1.2}>
-                <p className="text-xl md:text-2xl text-white/80 max-w-2xl mb-12 font-light leading-relaxed">
+                <p className="text-2xl md:text-3xl text-accent-gray max-w-2xl mb-20 font-light leading-relaxed">
                   Being first is what we're known for
                 </p>
               </ScrollReveal>
@@ -229,14 +229,14 @@ const XionPage = () => {
           <div className="grid lg:grid-cols-2 gap-24 items-center">
             <div>
               <ScrollReveal>
-                <h2 className="text-6xl md:text-7xl font-light leading-tight mb-12">
+                <h2 className="font-display text-5xl md:text-6xl font-light leading-tight mb-16">
                   First to launch a
                   <br />
-                  <span className="font-black text-electric-blue">consumer blockchain</span>
+                  <span className="font-bold text-electric-blue">consumer blockchain</span>
                 </h2>
               </ScrollReveal>
               
-              <div className="space-y-8 text-lg text-white/80 leading-relaxed">
+              <div className="space-y-10 text-lg text-white/80 leading-relaxed">
                 <ScrollReveal delay={200}>
                   <p>
                     While the industry focused on DeFi protocols and trader tools, XION built something different. 
