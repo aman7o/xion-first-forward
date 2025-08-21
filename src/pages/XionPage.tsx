@@ -1,432 +1,518 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Particles } from '@/components/Particles';
 import { CounterAnimation } from '@/components/CounterAnimation';
-import { ChevronDown, ExternalLink, Twitter, MessageCircle } from 'lucide-react';
+import { ChevronDown, ExternalLink, Twitter, MessageCircle, Menu, X, Play } from 'lucide-react';
 import xionLogo from '@/assets/xion-logo.png';
 import { SmoothScrollLink } from '@/components/SmoothScrollLink';
 import investorsLogos from '@/assets/investors-logos.png';
 
 const XionPage = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      {/* Navigation Header */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border-subtle">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center">
-            <img src={xionLogo} alt="XION" className="h-8" />
-          </div>
-          
-          <div className="hidden md:flex space-x-8 text-sm">
-            <SmoothScrollLink to="#consumer" className="text-text-muted hover:text-electric-blue">
-              Consumer Blockchain
-            </SmoothScrollLink>
-            <SmoothScrollLink to="#walletless" className="text-text-muted hover:text-electric-blue">
-              Walletless
-            </SmoothScrollLink>
-            <SmoothScrollLink to="#gasless" className="text-text-muted hover:text-electric-blue">
-              Gasless
-            </SmoothScrollLink>
-            <SmoothScrollLink to="#compliant" className="text-text-muted hover:text-electric-blue">
-              EU Compliant
-            </SmoothScrollLink>
-            <SmoothScrollLink to="#whats-next" className="text-text-muted hover:text-electric-blue">
-              What's Next
-            </SmoothScrollLink>
-          </div>
-          
-          <Button 
-            variant="electric" 
-            size="sm"
-            onClick={() => window.open('https://xion.burnt.com', '_blank')}
-          >
-            <ExternalLink className="w-4 h-4 mr-2" />
-            Learn More
-          </Button>
-        </div>
-      </nav>
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        <div className="particles">
-          <Particles density={60} color="#00D4FF" speed={0.3} />
-        </div>
-        
-        <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
-          <div className="animate-fade-in" style={{ animationDelay: '0.5s' }}>
-            <img src={xionLogo} alt="XION Logo" className="h-16 mx-auto mb-6 opacity-90" />
-          </div>
-          
-          <div className="animate-slide-up" style={{ animationDelay: '1s' }}>
-            <h2 className="text-hero mb-6">A HISTORY OF FIRSTS</h2>
-          </div>
-          
-          <div className="animate-slide-up" style={{ animationDelay: '1.5s' }}>
-            <p className="text-subtitle mb-8">Being first is what we're known for.</p>
-          </div>
-          
-          <div className="animate-fade-in" style={{ animationDelay: '2s' }}>
-            <p className="text-body-large mb-12 max-w-4xl mx-auto text-text-muted">
-              From consumer blockchain to chain abstraction, from walletless infrastructure to regulatory compliance, 
-              XION has consistently pioneered breakthrough innovations that bring Web3 to mainstream audiences.
-            </p>
-          </div>
-          
-          <div className="animate-scale-in" style={{ animationDelay: '3s' }}>
-            <div className="flex flex-col items-center">
-              <ChevronDown className="w-6 h-6 text-text-subtle animate-bounce" />
-              <span className="text-sm text-text-subtle mt-2">Discover Our Journey</span>
+  return (
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      {/* Navigation Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg">
+        <div className="container mx-auto px-8 py-6">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center">
+              <img src={xionLogo} alt="XION" className="h-8 w-auto" />
+            </div>
+            
+            <nav className="hidden lg:flex items-center space-x-12">
+              <SmoothScrollLink to="consumer" className="text-white/70 hover:text-white transition-colors text-sm font-medium tracking-wider">
+                Consumer
+              </SmoothScrollLink>
+              <SmoothScrollLink to="walletless" className="text-white/70 hover:text-white transition-colors text-sm font-medium tracking-wider">
+                Walletless
+              </SmoothScrollLink>
+              <SmoothScrollLink to="gasless" className="text-white/70 hover:text-white transition-colors text-sm font-medium tracking-wider">
+                Gasless
+              </SmoothScrollLink>
+              <SmoothScrollLink to="mica" className="text-white/70 hover:text-white transition-colors text-sm font-medium tracking-wider">
+                MiCA
+              </SmoothScrollLink>
+              <SmoothScrollLink to="usdc" className="text-white/70 hover:text-white transition-colors text-sm font-medium tracking-wider">
+                USDC
+              </SmoothScrollLink>
+              <SmoothScrollLink to="bybit" className="text-white/70 hover:text-white transition-colors text-sm font-medium tracking-wider">
+                Bybit
+              </SmoothScrollLink>
+              <SmoothScrollLink to="next" className="text-white/70 hover:text-white transition-colors text-sm font-medium tracking-wider">
+                What's Next
+              </SmoothScrollLink>
+            </nav>
+
+            <div className="flex items-center space-x-6">
+              <a 
+                href="https://xion.burnt.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hidden md:block text-white/70 hover:text-white transition-colors text-sm font-medium tracking-wider"
+              >
+                Learn More
+              </a>
+              <button 
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="lg:hidden text-white/70 hover:text-white transition-colors"
+              >
+                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* First Consumer Blockchain */}
-      <section id="consumer" className="py-20 px-6 bg-background-section">
-        <div className="max-w-6xl mx-auto">
-          <ScrollReveal>
-            <h2 className="text-section-title mb-12 text-center">FIRST TO LAUNCH A CONSUMER BLOCKCHAIN</h2>
-          </ScrollReveal>
-          
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <ScrollReveal delay={200}>
-                <p className="text-body-large">
-                  While the industry focused on DeFi protocols and trader tools, XION built something different. 
-                  A blockchain designed from the ground up for everyday users and real-world applications.
-                </p>
+          {/* Mobile Menu */}
+          {mobileMenuOpen && (
+            <nav className="lg:hidden mt-6 pb-6 border-t border-white/10 pt-6">
+              <div className="flex flex-col space-y-4">
+                <button onClick={() => { document.getElementById('consumer')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }} className="text-white/70 hover:text-white transition-colors text-base font-medium text-left">
+                  Consumer
+                </button>
+                <button onClick={() => { document.getElementById('walletless')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }} className="text-white/70 hover:text-white transition-colors text-base font-medium text-left">
+                  Walletless
+                </button>
+                <button onClick={() => { document.getElementById('gasless')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }} className="text-white/70 hover:text-white transition-colors text-base font-medium text-left">
+                  Gasless
+                </button>
+                <button onClick={() => { document.getElementById('mica')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }} className="text-white/70 hover:text-white transition-colors text-base font-medium text-left">
+                  MiCA
+                </button>
+                <button onClick={() => { document.getElementById('usdc')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }} className="text-white/70 hover:text-white transition-colors text-base font-medium text-left">
+                  USDC
+                </button>
+                <button onClick={() => { document.getElementById('bybit')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }} className="text-white/70 hover:text-white transition-colors text-base font-medium text-left">
+                  Bybit
+                </button>
+                <button onClick={() => { document.getElementById('next')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }} className="text-white/70 hover:text-white transition-colors text-base font-medium text-left">
+                  What's Next
+                </button>
+                <a 
+                  href="https://xion.burnt.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-electric-blue font-medium text-base"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Learn More
+                </a>
+              </div>
+            </nav>
+          )}
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('data:image/svg+xml,${encodeURIComponent(`
+              <svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="grad1" cx="30%" cy="40%" r="40%">
+                    <stop offset="0%" style="stop-color:rgb(0,212,255);stop-opacity:0.3" />
+                    <stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+                  </radialGradient>
+                  <radialGradient id="grad2" cx="70%" cy="60%" r="35%">
+                    <stop offset="0%" style="stop-color:rgb(0,212,255);stop-opacity:0.2" />
+                    <stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+                  </radialGradient>
+                </defs>
+                <rect width="100%" height="100%" fill="black"/>
+                <circle cx="360" cy="320" r="200" fill="url(#grad1)" opacity="0.8"/>
+                <circle cx="840" cy="480" r="180" fill="url(#grad2)" opacity="0.6"/>
+                <g stroke="rgba(0,212,255,0.1)" stroke-width="1" fill="none">
+                  <path d="M0,400 Q300,200 600,400 T1200,400" opacity="0.5"/>
+                  <path d="M0,500 Q300,300 600,500 T1200,500" opacity="0.3"/>
+                  <path d="M0,300 Q300,100 600,300 T1200,300" opacity="0.4"/>
+                </g>
+              </svg>
+            `)})`,
+          }}
+        />
+        
+        <Particles />
+        
+        <div className="container mx-auto px-8 relative z-10 max-w-7xl">
+          <div className="flex items-center justify-between">
+            <div className="flex-1">
+              <ScrollReveal delay={0.8}>
+                <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-light leading-none tracking-tight mb-6">
+                  A History of
+                  <br />
+                  <span className="font-black text-electric-blue">Firsts</span>
+                </h1>
               </ScrollReveal>
               
-              <ScrollReveal delay={400}>
-                <p className="text-body-large">
-                  XION's consumer-first approach attracted over 100+ global brands including Uber, BMW, Amazon Prime, 
-                  The North Face, and Temu. These companies didn't want crypto complexity – they wanted seamless Web3 experiences for their customers.
+              <ScrollReveal delay={1.2}>
+                <p className="text-xl md:text-2xl text-white/80 max-w-2xl mb-12 font-light leading-relaxed">
+                  Being first is what we're known for
                 </p>
               </ScrollReveal>
-              
-              <ScrollReveal delay={600}>
-                <p className="text-body-large">
-                  The result speaks for itself: over 2.5 million users actively utilizing products built on XION, 
-                  with 1.49+ million brand interactions and counting. This is what mainstream blockchain adoption looks like.
-                </p>
-              </ScrollReveal>
-              
-              <ScrollReveal delay={800}>
-                <div className="bg-card border border-electric-blue rounded-xl p-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-electric-blue">
-                        <CounterAnimation end={2500000} suffix="+" />
-                      </div>
-                      <div className="text-sm text-text-muted">Active Users</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-electric-blue">
-                        <CounterAnimation end={100} suffix="+" />
-                      </div>
-                      <div className="text-sm text-text-muted">Global Brands</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-electric-blue">
-                        <CounterAnimation end={1490000} suffix="+" />
-                      </div>
-                      <div className="text-sm text-text-muted">Brand Interactions</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-electric-blue">
-                        <CounterAnimation end={70000} suffix="+" />
-                      </div>
-                      <div className="text-sm text-text-muted">Daily Active Users</div>
-                    </div>
-                  </div>
+
+              <ScrollReveal delay={1.6}>
+                <div className="flex items-center space-x-4">
+                  <Button 
+                    variant="outline" 
+                    size="lg"
+                    className="bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm"
+                  >
+                    <Play className="w-5 h-5 mr-2" />
+                    Watch Episode
+                  </Button>
                 </div>
               </ScrollReveal>
             </div>
             
-            <ScrollReveal delay={1000}>
-              <div className="video-placeholder h-80"></div>
-            </ScrollReveal>
+            {/* Floating Info Card */}
+            <div className="hidden xl:block">
+              <ScrollReveal delay={1.4}>
+                <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 max-w-sm border border-white/20 ml-12">
+                  <div className="mb-6">
+                    <img src={xionLogo} alt="XION" className="h-12 w-auto opacity-90" />
+                  </div>
+                  <h3 className="text-white font-medium mb-3 text-lg">
+                    Pioneering breakthrough innovations
+                  </h3>
+                  <p className="text-white/70 text-sm leading-relaxed mb-6">
+                    From consumer blockchain to chain abstraction, bringing Web3 to mainstream audiences.
+                  </p>
+                  <Button 
+                    variant="outline"
+                    size="sm" 
+                    className="w-full bg-electric-blue/20 border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-black"
+                  >
+                    Explore Journey
+                  </Button>
+                </div>
+              </ScrollReveal>
+            </div>
           </div>
           
-          <ScrollReveal delay={1200}>
-            <blockquote className="text-center mt-16">
-              <p className="text-2xl font-medium italic text-electric-blue mb-4">
-                "We're seeing the future of Web3 unfold, where blockchain technology becomes accessible to mainstream audiences."
-              </p>
-              <cite className="text-text-muted">- Burnt Banksy, Founder</cite>
-            </blockquote>
+          <ScrollReveal delay={2.5}>
+            <div className="absolute bottom-12 left-8">
+              <SmoothScrollLink to="consumer" className="group">
+                <div className="flex flex-col items-start space-y-3 text-white/50 hover:text-white transition-colors">
+                  <span className="text-sm tracking-[0.3em] uppercase font-light">Discover Our Journey</span>
+                  <ChevronDown className="h-6 w-6 group-hover:animate-bounce" />
+                </div>
+              </SmoothScrollLink>
+            </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Walletless L1 */}
-      <section id="walletless" className="py-20 px-6 bg-background-darker">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
+      {/* Consumer Blockchain Section */}
+      <section id="consumer" className="relative min-h-screen flex items-center justify-center py-32">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+          style={{
+            backgroundImage: `url('data:image/svg+xml,${encodeURIComponent(`
+              <svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" fill="#0a0a0a"/>
+                <g opacity="0.3">
+                  <circle cx="200" cy="200" r="3" fill="#00D4FF"/>
+                  <circle cx="800" cy="150" r="2" fill="#00D4FF"/>
+                  <circle cx="400" cy="600" r="4" fill="#00D4FF"/>
+                  <circle cx="1000" cy="500" r="2" fill="#00D4FF"/>
+                  <circle cx="150" cy="450" r="3" fill="#00D4FF"/>
+                  <circle cx="950" cy="200" r="2" fill="#00D4FF"/>
+                </g>
+              </svg>
+            `)})`,
+          }}
+        />
+        
+        <div className="container mx-auto px-8 relative z-10 max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            <div>
               <ScrollReveal>
-                <h2 className="text-section-title mb-8">FIRST WALLETLESS L1 BLOCKCHAIN</h2>
+                <h2 className="text-6xl md:text-7xl font-light leading-tight mb-12">
+                  First to launch a
+                  <br />
+                  <span className="font-black text-electric-blue">consumer blockchain</span>
+                </h2>
               </ScrollReveal>
               
-              <ScrollReveal delay={200}>
-                <p className="text-body-large">
-                  Traditional wallets create a staggering 95%+ drop-off in user onboarding. Seed phrases, private keys, 
-                  browser extensions – these aren't features, they're barriers.
-                </p>
-              </ScrollReveal>
-              
-              <ScrollReveal delay={400}>
-                <p className="text-body-large">
-                  XION eliminated them entirely through protocol-level account abstraction. Users log in with their email address 
-                  across any device. No downloads, no setup, no technical knowledge required.
-                </p>
-              </ScrollReveal>
+              <div className="space-y-8 text-lg text-white/80 leading-relaxed">
+                <ScrollReveal delay={200}>
+                  <p>
+                    While the industry focused on DeFi protocols and trader tools, XION built something different. 
+                    A blockchain designed from the ground up for everyday users and real-world applications.
+                  </p>
+                </ScrollReveal>
+                
+                <ScrollReveal delay={400}>
+                  <p>
+                    XION's consumer-first approach attracted over 100+ global brands including Uber, BMW, Amazon Prime, 
+                    The North Face, and Temu.
+                  </p>
+                </ScrollReveal>
+              </div>
               
               <ScrollReveal delay={600}>
-                <p className="text-body-large">
-                  This breakthrough enabled XION to achieve a 97% user conversion rate compared to the industry average of just 5%. 
-                  When you remove friction, adoption follows.
-                </p>
+                <div className="mt-12">
+                  <p className="text-white/60 text-sm tracking-[0.2em] uppercase mb-4">Pure, versatile,</p>
+                  <p className="text-white/60 text-sm tracking-[0.2em] uppercase">mainstream adoption</p>
+                </div>
               </ScrollReveal>
-              
+            </div>
+            
+            <div className="space-y-8">
+              {/* Floating Stats Card */}
               <ScrollReveal delay={800}>
-                <div className="bg-electric-blue text-black rounded-xl p-6">
-                  <div className="grid grid-cols-2 gap-4 text-center font-semibold">
-                    <div>✓ Email login</div>
-                    <div>✓ Cross-device access</div>
-                    <div>✓ No seed phrases</div>
-                    <div>✓ Account recovery</div>
+                <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="text-center">
+                      <div className="text-3xl font-light text-electric-blue mb-2">
+                        <CounterAnimation end={2.5} suffix="M+" />
+                      </div>
+                      <div className="text-sm text-white/60 tracking-wide">Active Users</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl font-light text-electric-blue mb-2">
+                        <CounterAnimation end={100} suffix="+" />
+                      </div>
+                      <div className="text-sm text-white/60 tracking-wide">Global Brands</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl font-light text-electric-blue mb-2">
+                        <CounterAnimation end={1.49} suffix="M+" />
+                      </div>
+                      <div className="text-sm text-white/60 tracking-wide">Brand Interactions</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl font-light text-electric-blue mb-2">
+                        <CounterAnimation end={70} suffix="K+" />
+                      </div>
+                      <div className="text-sm text-white/60 tracking-wide">Daily Active</div>
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
               
+              {/* Quote Card */}
               <ScrollReveal delay={1000}>
-                <div className="bg-background-dark border border-border-subtle rounded-xl p-6">
-                  <p className="text-electric-blue font-medium">
-                    Powered by Meta Accounts – smart contract accounts with Web2 authentication methods built at the protocol level
+                <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+                  <blockquote className="text-xl font-light italic text-white/90 mb-4 leading-relaxed">
+                    "We're seeing the future of Web3 unfold, where blockchain technology becomes accessible to mainstream audiences."
+                  </blockquote>
+                  <cite className="text-white/60 text-sm">— Burnt Banksy, Founder</cite>
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Walletless Section */}
+      <section id="walletless" className="relative min-h-screen flex items-center justify-center py-32 bg-gradient-to-b from-black to-gray-950">
+        <div className="container mx-auto px-8 relative z-10 max-w-7xl">
+          <div className="text-center mb-20">
+            <ScrollReveal>
+              <h2 className="text-6xl md:text-7xl font-light leading-tight mb-8">
+                First <span className="font-black text-electric-blue">walletless</span>
+                <br />
+                L1 blockchain
+              </h2>
+            </ScrollReveal>
+            
+            <ScrollReveal delay={200}>
+              <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed">
+                Traditional wallets create a staggering 95%+ drop-off in user onboarding. 
+                XION eliminated them entirely through protocol-level account abstraction.
+              </p>
+            </ScrollReveal>
+          </div>
+          
+          <div className="grid lg:grid-cols-3 gap-8 mb-16">
+            <ScrollReveal delay={400}>
+              <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 text-center">
+                <div className="text-4xl font-light text-electric-blue mb-4">95%+</div>
+                <div className="text-white/60 text-sm tracking-wide">Traditional Drop-off</div>
+              </div>
+            </ScrollReveal>
+            
+            <ScrollReveal delay={600}>
+              <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 text-center">
+                <div className="text-4xl font-light text-electric-blue mb-4">97%</div>
+                <div className="text-white/60 text-sm tracking-wide">XION Conversion</div>
+              </div>
+            </ScrollReveal>
+            
+            <ScrollReveal delay={800}>
+              <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 text-center">
+                <div className="text-4xl font-light text-electric-blue mb-4">0</div>
+                <div className="text-white/60 text-sm tracking-wide">Seed Phrases</div>
+              </div>
+            </ScrollReveal>
+          </div>
+          
+          <ScrollReveal delay={1000}>
+            <div className="text-center">
+              <Button 
+                variant="outline"
+                size="lg"
+                className="bg-electric-blue/10 border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-black"
+              >
+                Experience Walletless
+              </Button>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Gasless Section */}
+      <section id="gasless" className="relative min-h-screen flex items-center justify-center py-32">
+        <div className="container mx-auto px-8 relative z-10 max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            <div>
+              <ScrollReveal>
+                <h2 className="text-6xl md:text-7xl font-light leading-tight mb-12">
+                  First to eliminate
+                  <br />
+                  <span className="font-black text-electric-blue">gas complexity</span>
+                </h2>
+              </ScrollReveal>
+              
+              <div className="space-y-8 text-lg text-white/80 leading-relaxed">
+                <ScrollReveal delay={200}>
+                  <p>
+                    Gas fees represent one of Web3's biggest adoption hurdles. XION solved this through 
+                    complete gas abstraction at the protocol level.
+                  </p>
+                </ScrollReveal>
+                
+                <ScrollReveal delay={400}>
+                  <p>
+                    Users never see gas fees, never calculate them, never run out of them. 
+                    The experience feels like any Web2 application.
+                  </p>
+                </ScrollReveal>
+              </div>
+            </div>
+            
+            <div className="space-y-8">
+              <ScrollReveal delay={600}>
+                <div className="bg-red-500/20 border border-red-500/30 rounded-3xl p-8">
+                  <h3 className="text-red-400 font-medium mb-4 tracking-wide">BEFORE</h3>
+                  <p className="text-white/70">
+                    Calculate gas → Acquire tokens → Hope prices don't spike → Transaction fails → Start over
+                  </p>
+                </div>
+              </ScrollReveal>
+              
+              <ScrollReveal delay={800}>
+                <div className="bg-green-500/20 border border-green-500/30 rounded-3xl p-8">
+                  <h3 className="text-green-400 font-medium mb-4 tracking-wide">AFTER</h3>
+                  <p className="text-white/70">
+                    Click button → Transaction completes → That's it
                   </p>
                 </div>
               </ScrollReveal>
             </div>
-            
-            <ScrollReveal delay={1200}>
-              <div className="video-placeholder h-80"></div>
-            </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* Gas Elimination */}
-      <section id="gasless" className="py-20 px-6 bg-background relative overflow-hidden">
-        <div className="particles">
-          <Particles density={30} color="#00D4FF" speed={0.2} />
-        </div>
-        
-        <div className="relative z-10 max-w-6xl mx-auto text-center">
+      {/* MiCA Section */}
+      <section id="mica" className="relative min-h-screen flex items-center justify-center py-32 bg-gradient-to-b from-gray-950 to-blue-950/20">
+        <div className="container mx-auto px-8 relative z-10 max-w-7xl text-center">
           <ScrollReveal>
-            <h2 className="text-section-title mb-12">FIRST TO ELIMINATE GAS COMPLEXITY</h2>
-          </ScrollReveal>
-          
-          <div className="space-y-8 mb-12">
-            <ScrollReveal delay={200}>
-              <p className="text-body-large max-w-4xl mx-auto">
-                Gas fees represent one of Web3's biggest adoption hurdles. The concept is foreign to mainstream users. 
-                The process of acquiring gas tokens creates friction. The unpredictable costs cause frustration.
-              </p>
-            </ScrollReveal>
-            
-            <ScrollReveal delay={400}>
-              <p className="text-body-large max-w-4xl mx-auto">
-                XION solved this through complete gas abstraction at the protocol level. Users never see gas fees, 
-                never calculate them, never run out of them. The experience feels like any Web2 application.
-              </p>
-            </ScrollReveal>
-            
-            <ScrollReveal delay={600}>
-              <p className="text-body-large max-w-4xl mx-auto">
-                Built-in paymasters and parameterized fee layers handle everything behind the scenes. 
-                Developers can sponsor transactions or implement custom fee structures. Users just interact naturally.
-              </p>
-            </ScrollReveal>
-          </div>
-          
-          <div className="grid lg:grid-cols-2 gap-8 mb-12">
-            <ScrollReveal delay={800}>
-              <div className="border-l-4 border-red-500 bg-card p-6 rounded-r-xl">
-                <h3 className="font-semibold mb-3 text-red-400">BEFORE</h3>
-                <p className="text-text-muted">
-                  Calculate gas → Acquire tokens → Hope prices don't spike → Transaction fails → Start over
-                </p>
-              </div>
-            </ScrollReveal>
-            
-            <ScrollReveal delay={1000}>
-              <div className="border-l-4 border-green-500 bg-card p-6 rounded-r-xl">
-                <h3 className="font-semibold mb-3 text-green-400">AFTER</h3>
-                <p className="text-text-muted">
-                  Click button → Transaction completes → That's it
-                </p>
-              </div>
-            </ScrollReveal>
-          </div>
-          
-          <ScrollReveal delay={1200}>
-            <div className="bg-electric-blue-dark text-electric-blue rounded-xl p-6 mb-8">
-              <p className="font-semibold text-lg">
-                Gasless transactions • Protocol-level abstraction • Seamless user experience
-              </p>
-            </div>
-          </ScrollReveal>
-          
-          <ScrollReveal delay={1400}>
-            <div className="video-placeholder h-80 max-w-2xl mx-auto"></div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Investors Section */}
-      <section className="py-16 px-6 bg-background-section">
-        <div className="max-w-6xl mx-auto text-center">
-          <ScrollReveal>
-            <h3 className="text-xl font-medium text-text-muted mb-8">BACKED BY THE BEST</h3>
+            <h2 className="text-6xl md:text-7xl font-light leading-tight mb-12">
+              First <span className="font-black text-electric-blue">EU Title II</span>
+              <br />
+              compliant L1 blockchain
+            </h2>
           </ScrollReveal>
           
           <ScrollReveal delay={200}>
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-              <img src={investorsLogos} alt="Top-tier investors including Multicoin, Animoca, Circle, Hashkey, Arrington Capital, Spartan" className="max-h-12" />
-            </div>
+            <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed mb-16">
+              On March 13, 2025, XION made history at the New York Stock Exchange, announcing compliance 
+              with EU Title II regulations under the Markets in Crypto-Assets (MiCA) framework.
+            </p>
           </ScrollReveal>
           
           <ScrollReveal delay={400}>
-            <p className="text-sm text-text-subtle mt-6">
-              Raised $36M from Multicoin, Animoca, Circle, Hashkey, Arrington Capital, Spartan, and more
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* MICA Compliance */}
-      <section id="compliant" className="py-20 px-6 bg-gradient-to-b from-blue-950/20 to-background-section">
-        <div className="max-w-6xl mx-auto">
-          <ScrollReveal>
-            <h2 className="text-section-title mb-12 text-center">FIRST EU TITLE II COMPLIANT L1 BLOCKCHAIN</h2>
-          </ScrollReveal>
-          
-          <div className="space-y-8 mb-12">
-            <ScrollReveal delay={200}>
-              <p className="text-body-large text-center max-w-4xl mx-auto">
-                On March 13, 2025, XION made history at the New York Stock Exchange, announcing compliance with EU Title II 
-                regulations under the Markets in Crypto-Assets (MiCA) framework.
-              </p>
-            </ScrollReveal>
-            
-            <ScrollReveal delay={400}>
-              <p className="text-body-large text-center max-w-4xl mx-auto">
-                This regulatory milestone opened doors for institutional adoption across Europe, providing the clarity and 
-                security needed for both institutions and individuals to confidently engage with digital assets.
-              </p>
-            </ScrollReveal>
-            
-            <ScrollReveal delay={600}>
-              <p className="text-body-large text-center max-w-4xl mx-auto">
-                The compliance enables unbridled access to a blockchain that bridges Web2 and Web3, offering regulatory 
-                clarity alongside user-friendly infrastructure. It's not just about following rules – it's about expanding access.
-              </p>
-            </ScrollReveal>
-          </div>
-          
-          <ScrollReveal delay={800}>
-            <blockquote className="text-center my-16">
-              <p className="text-4xl font-bold text-electric-blue mb-4">
-                "I have never been more excited for the future of this industry"
-              </p>
-              <cite className="text-text-subtle">- Burnt Banksy, speaking at the New York Stock Exchange</cite>
+            <blockquote className="text-4xl md:text-5xl font-light italic text-electric-blue mb-8 leading-tight">
+              "I have never been more excited for the future of this industry"
             </blockquote>
           </ScrollReveal>
           
-          <ScrollReveal delay={1000}>
-            <div className="bg-card border-2 border-yellow-500 rounded-xl p-6 text-center mb-8">
-              <p className="font-semibold text-lg mb-2">
+          <ScrollReveal delay={600}>
+            <cite className="text-white/60 text-lg">— Burnt Banksy, speaking at the New York Stock Exchange</cite>
+          </ScrollReveal>
+          
+          <ScrollReveal delay={800}>
+            <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-3xl p-8 mt-16 max-w-2xl mx-auto">
+              <p className="text-yellow-400 font-medium text-lg mb-2">
                 First L1 on mainnet to release MiCA Title II whitepaper
               </p>
-              <p className="text-text-muted">
+              <p className="text-white/70">
                 Opens access for 450M+ European users
               </p>
             </div>
           </ScrollReveal>
-          
-          <ScrollReveal delay={1200}>
-            <div className="video-placeholder h-80 max-w-3xl mx-auto"></div>
-          </ScrollReveal>
         </div>
       </section>
 
-      {/* USDC Integration */}
-      <section className="py-20 px-6 bg-background-darker">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
+      {/* USDC Section */}
+      <section id="usdc" className="relative min-h-screen flex items-center justify-center py-32">
+        <div className="container mx-auto px-8 relative z-10 max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            <div>
               <ScrollReveal>
-                <h2 className="text-section-title mb-8">FIRST TO PAY GAS WITH USDC</h2>
+                <h2 className="text-6xl md:text-7xl font-light leading-tight mb-12">
+                  First to pay gas
+                  <br />
+                  with <span className="font-black text-electric-blue">USDC</span>
+                </h2>
               </ScrollReveal>
               
-              <ScrollReveal delay={200}>
-                <p className="text-body-large">
-                  Most blockchains require users to acquire native tokens for gas fees. This creates a complex multi-step process: 
-                  find the right token, buy it on an exchange, bridge it to the network, hope you have enough.
-                </p>
-              </ScrollReveal>
-              
-              <ScrollReveal delay={400}>
-                <p className="text-body-large">
-                  XION eliminated this friction entirely. Users pay gas fees directly in USDC – a familiar, stable currency 
-                  they likely already hold. The protocol automatically handles everything behind the scenes.
-                </p>
-              </ScrollReveal>
-              
-              <ScrollReveal delay={600}>
-                <p className="text-body-large">
-                  When users pay gas in USDC, the protocol automatically converts those funds to purchase $XION tokens. 
-                  Users get a seamless experience, while value accrues to the ecosystem organically.
-                </p>
-              </ScrollReveal>
-              
-              <ScrollReveal delay={800}>
-                <div className="bg-card border border-electric-blue rounded-xl p-6">
-                  <div className="text-center text-lg font-medium text-electric-blue">
-                    User pays USDC → Protocol converts → $XION purchased → Transaction executes → Everyone wins
-                  </div>
-                </div>
-              </ScrollReveal>
-              
-              <ScrollReveal delay={1000}>
-                <div className="bg-electric-blue-dark text-electric-blue rounded-xl p-6">
-                  <p className="font-semibold text-lg text-center">
-                    Powered by strategic partnership with Circle, the issuer of USDC
+              <div className="space-y-8 text-lg text-white/80 leading-relaxed">
+                <ScrollReveal delay={200}>
+                  <p>
+                    Most blockchains require users to acquire native tokens for gas fees. 
+                    XION eliminated this friction entirely.
                   </p>
-                </div>
-              </ScrollReveal>
+                </ScrollReveal>
+                
+                <ScrollReveal delay={400}>
+                  <p>
+                    Users pay gas fees directly in USDC – a familiar, stable currency they likely already hold. 
+                    The protocol automatically handles everything behind the scenes.
+                  </p>
+                </ScrollReveal>
+              </div>
             </div>
             
-            <div className="space-y-6">
-              <ScrollReveal delay={1200}>
-                <div className="video-placeholder h-64"></div>
-              </ScrollReveal>
-              
-              <ScrollReveal delay={1400}>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-card border border-electric-blue rounded-xl p-4 text-center">
-                    <div className="text-sm font-medium">Familiar stablecoin payments</div>
+            <div>
+              <ScrollReveal delay={600}>
+                <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+                  <div className="text-center mb-8">
+                    <div className="text-2xl font-light text-electric-blue mb-4">Powered by Circle</div>
+                    <p className="text-white/60 text-sm">Strategic partnership with the issuer of USDC</p>
                   </div>
-                  <div className="bg-card border border-electric-blue rounded-xl p-4 text-center">
-                    <div className="text-sm font-medium">No volatile token requirements</div>
-                  </div>
-                  <div className="bg-card border border-electric-blue rounded-xl p-4 text-center">
-                    <div className="text-sm font-medium">Sustainable token economics</div>
-                  </div>
-                  <div className="bg-card border border-electric-blue rounded-xl p-4 text-center">
-                    <div className="text-sm font-medium">Seamless user experience</div>
+                  
+                  <div className="space-y-4">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-electric-blue rounded-full"></div>
+                      <span className="text-white/70">Familiar stablecoin payments</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-electric-blue rounded-full"></div>
+                      <span className="text-white/70">No volatile token requirements</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-electric-blue rounded-full"></div>
+                      <span className="text-white/70">Sustainable token economics</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-electric-blue rounded-full"></div>
+                      <span className="text-white/70">Seamless user experience</span>
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
@@ -435,127 +521,115 @@ const XionPage = () => {
         </div>
       </section>
 
-      {/* Bybit Launchpool */}
-      <section className="py-20 px-6 bg-background">
-        <div className="max-w-6xl mx-auto text-center">
+      {/* Bybit Section */}
+      <section id="bybit" className="relative min-h-screen flex items-center justify-center py-32 bg-gradient-to-b from-black to-gray-950">
+        <div className="container mx-auto px-8 relative z-10 max-w-7xl text-center">
           <ScrollReveal>
-            <h2 className="text-section-title mb-12">FIRST EVER BYBIT EU LAUNCHPOOL</h2>
+            <h2 className="text-6xl md:text-7xl font-light leading-tight mb-12">
+              First ever <span className="font-black text-electric-blue">Bybit EU</span>
+              <br />
+              Launchpool
+            </h2>
           </ScrollReveal>
           
-          <div className="space-y-8 mb-12">
-            <ScrollReveal delay={200}>
-              <p className="text-body-large max-w-4xl mx-auto">
-                On August 14, 2025, XION broke new ground once again, becoming the inaugural Launchpool project on 
-                Bybit's EU exchange following their MiCAR license approval.
-              </p>
-            </ScrollReveal>
-            
-            <ScrollReveal delay={400}>
-              <p className="text-body-large max-w-4xl mx-auto">
-                This partnership opens regulated access to $XION for 450M+ users across the European Economic Area, 
-                demonstrating how regulatory compliance accelerates rather than hinders innovation.
-              </p>
-            </ScrollReveal>
-            
-            <ScrollReveal delay={600}>
-              <p className="text-body-large max-w-4xl mx-auto">
-                The collaboration reinforces XION's position as the blockchain that consistently pioneers new paths for the industry, 
-                setting precedents for mainstream crypto adoption in regulated markets.
-              </p>
-            </ScrollReveal>
-          </div>
+          <ScrollReveal delay={200}>
+            <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed mb-16">
+              On August 14, 2025, XION broke new ground once again, becoming the inaugural Launchpool project 
+              on Bybit's EU exchange following their MiCAR license approval.
+            </p>
+          </ScrollReveal>
           
-          <ScrollReveal delay={800}>
-            <div className="bg-card border border-electric-blue rounded-xl p-6 mb-8">
-              <div className="grid md:grid-cols-4 gap-4 text-center font-semibold">
+          <ScrollReveal delay={400}>
+            <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-12 border border-white/10 max-w-4xl mx-auto mb-16">
+              <div className="grid md:grid-cols-3 gap-8 text-center">
                 <div>
-                  <div className="text-electric-blue">Total Pool</div>
-                  <div>100,000 XION</div>
+                  <div className="text-3xl font-light text-electric-blue mb-2">60%</div>
+                  <div className="text-white/60 text-sm tracking-wide">XION Stakers APR</div>
                 </div>
                 <div>
-                  <div className="text-electric-blue">XION Stakers</div>
-                  <div>60% APR</div>
+                  <div className="text-3xl font-light text-electric-blue mb-2">36%</div>
+                  <div className="text-white/60 text-sm tracking-wide">MNT Stakers APR</div>
                 </div>
                 <div>
-                  <div className="text-electric-blue">MNT Stakers</div>
-                  <div>36% APR</div>
-                </div>
-                <div>
-                  <div className="text-electric-blue">USDC Stakers</div>
-                  <div>24% APR</div>
+                  <div className="text-3xl font-light text-electric-blue mb-2">24%</div>
+                  <div className="text-white/60 text-sm tracking-wide">USDC Stakers APR</div>
                 </div>
               </div>
             </div>
           </ScrollReveal>
           
-          <ScrollReveal delay={1000}>
-            <blockquote className="mb-8">
-              <p className="text-3xl font-medium italic text-electric-blue mb-4">
-                "Today's launch with XION demonstrates how regulation can accelerate rather than hinder innovation"
-              </p>
-              <cite className="text-text-subtle">- Mazurka Zheng, CEO of Bybit EU</cite>
+          <ScrollReveal delay={600}>
+            <blockquote className="text-2xl md:text-3xl font-light italic text-electric-blue mb-6 leading-relaxed">
+              "Today's launch with XION demonstrates how regulation can accelerate rather than hinder innovation"
             </blockquote>
           </ScrollReveal>
           
-          <ScrollReveal delay={1200}>
-            <div className="inline-flex items-center justify-center w-32 h-32 bg-electric-blue text-black rounded-full font-bold text-center mb-8">
-              <div>
-                <div className="text-sm">PIONEERING</div>
-                <div className="text-xs">REGULATED CRYPTO</div>
-                <div className="text-xs">IN EUROPE</div>
-              </div>
-            </div>
-          </ScrollReveal>
-          
-          <ScrollReveal delay={1400}>
-            <div className="video-placeholder h-80 max-w-2xl mx-auto"></div>
+          <ScrollReveal delay={800}>
+            <cite className="text-white/60 text-lg">— Mazurka Zheng, CEO of Bybit EU</cite>
           </ScrollReveal>
         </div>
       </section>
-
-      {/* What's Next */}
-      <section id="whats-next" className="py-32 px-6 bg-background relative overflow-hidden">
-        <div className="particles">
-          <Particles density={80} color="#00D4FF" speed={0.4} />
-        </div>
+      
+      {/* What's Next Section */}
+      <section id="next" className="relative min-h-screen flex items-center justify-center py-32">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+          style={{
+            backgroundImage: `url('data:image/svg+xml,${encodeURIComponent(`
+              <svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="mystery" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" style="stop-color:rgb(0,212,255);stop-opacity:0.4" />
+                    <stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+                  </radialGradient>
+                </defs>
+                <rect width="100%" height="100%" fill="black"/>
+                <circle cx="600" cy="400" r="300" fill="url(#mystery)" opacity="0.6"/>
+                <g stroke="rgba(0,212,255,0.2)" stroke-width="2" fill="none">
+                  <circle cx="600" cy="400" r="150" opacity="0.8"/>
+                  <circle cx="600" cy="400" r="200" opacity="0.6"/>
+                  <circle cx="600" cy="400" r="250" opacity="0.4"/>
+                </g>
+              </svg>
+            `)})`,
+          }}
+        />
         
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
+        <Particles />
+        
+        <div className="container mx-auto px-8 relative z-10 max-w-7xl text-center">
           <ScrollReveal>
-            <h2 className="text-hero mb-12 text-electric-blue-glow">THE NEXT FIRST IS COMING</h2>
+            <h2 className="text-7xl md:text-8xl lg:text-9xl font-light leading-tight mb-12">
+              The next first
+              <br />
+              <span className="font-black text-electric-blue">is coming</span>
+            </h2>
           </ScrollReveal>
           
-          <div className="space-y-8 mb-16">
-            <ScrollReveal delay={200}>
-              <p className="text-2xl text-text-secondary">
-                Every breakthrough was just the beginning. Every first led to the next innovation. Every barrier removed opened new possibilities.
-              </p>
-            </ScrollReveal>
-            
-            <ScrollReveal delay={400}>
-              <div className="text-5xl font-bold text-electric-blue animate-glow-pulse">
-                [REDACTED] LAUNCH INCOMING
-              </div>
-            </ScrollReveal>
-            
-            <ScrollReveal delay={600}>
-              <p className="text-xl text-text-muted">
-                XION has built a history of firsts. Soon, we'll add another first to the list.
-              </p>
-            </ScrollReveal>
-            
-            <ScrollReveal delay={800}>
-              <p className="text-lg text-text-subtle">
-                And one thing is for certain, it definitely won't be the last.
-              </p>
-            </ScrollReveal>
-          </div>
+          <ScrollReveal delay={200}>
+            <p className="text-2xl md:text-3xl text-white/80 max-w-4xl mx-auto leading-relaxed mb-16">
+              Every breakthrough was just the beginning. Every first led to the next innovation.
+            </p>
+          </ScrollReveal>
           
-          <ScrollReveal delay={1000}>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <ScrollReveal delay={400}>
+            <div className="text-5xl md:text-6xl font-black text-electric-blue mb-12 animate-pulse">
+              [REDACTED] LAUNCH INCOMING
+            </div>
+          </ScrollReveal>
+          
+          <ScrollReveal delay={600}>
+            <p className="text-xl text-white/70 mb-16">
+              XION has built a history of firsts. Soon, we'll add another first to the list.
+            </p>
+          </ScrollReveal>
+          
+          <ScrollReveal delay={800}>
+            <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6 mb-16">
               <Button 
-                variant="electric" 
-                size="lg" 
-                className="w-full sm:w-auto"
+                variant="default"
+                size="lg"
+                className="bg-electric-blue text-black hover:bg-electric-blue/90 px-8 py-4"
                 onClick={() => window.open('https://twitter.com/burnt_xion', '_blank')}
               >
                 <Twitter className="w-5 h-5 mr-2" />
@@ -563,18 +637,18 @@ const XionPage = () => {
               </Button>
               
               <Button 
-                variant="dark" 
-                size="lg" 
-                className="w-full sm:w-auto"
+                variant="outline"
+                size="lg"
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20 px-8 py-4"
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Join Discord
               </Button>
               
               <Button 
-                variant="electric-outline" 
-                size="lg" 
-                className="w-full sm:w-auto"
+                variant="outline"
+                size="lg"
+                className="border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-black px-8 py-4"
                 onClick={() => window.open('https://xion.burnt.com', '_blank')}
               >
                 <ExternalLink className="w-5 h-5 mr-2" />
@@ -583,41 +657,66 @@ const XionPage = () => {
             </div>
           </ScrollReveal>
           
-          <ScrollReveal delay={1200}>
-            <p className="text-sm text-electric-blue mt-12">
+          <ScrollReveal delay={1000}>
+            <p className="text-electric-blue text-lg font-light tracking-[0.2em] uppercase">
               Being first is what we're known for.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 px-6 bg-background border-t border-border-subtle">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <p className="text-sm text-text-faded">
-            Created for the XION 4th Weekly Content Competition • August 2025
-          </p>
+      {/* Investors Section */}
+      <section className="py-20 px-8 bg-gray-950/50">
+        <div className="container mx-auto text-center max-w-6xl">
+          <ScrollReveal>
+            <h3 className="text-lg font-light text-white/60 mb-8 tracking-[0.3em] uppercase">Backed by the Best</h3>
+          </ScrollReveal>
           
-          <div className="flex flex-wrap justify-center gap-6 text-text-subtle">
-            <a href="https://xion.burnt.com" target="_blank" rel="noopener noreferrer" className="hover:text-electric-blue transition-colors">
-              Website: xion.burnt.com
-            </a>
-            <a href="https://twitter.com/burnt_xion" target="_blank" rel="noopener noreferrer" className="hover:text-electric-blue transition-colors">
-              Twitter: @burnt_xion
-            </a>
-            <a href="#" className="hover:text-electric-blue transition-colors">
-              Discord: [link]
-            </a>
+          <ScrollReveal delay={200}>
+            <div className="flex justify-center items-center opacity-40 hover:opacity-60 transition-opacity">
+              <img src={investorsLogos} alt="Top-tier investors" className="max-h-12" />
+            </div>
+          </ScrollReveal>
+          
+          <ScrollReveal delay={400}>
+            <p className="text-sm text-white/50 mt-6">
+              Raised $36M from Multicoin, Animoca, Circle, Hashkey, Arrington Capital, Spartan, and more
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-16 px-8 bg-black border-t border-white/10">
+        <div className="container mx-auto text-center max-w-6xl">
+          <div className="mb-8">
+            <p className="text-white/40 text-sm mb-4 tracking-wide">
+              Created for the XION 4th Weekly Content Competition • August 2025
+            </p>
+            
+            <div className="flex flex-wrap justify-center items-center space-x-8 text-sm text-white/60">
+              <a href="https://xion.burnt.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                Website
+              </a>
+              <a href="https://twitter.com/burnt_xion" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                Twitter
+              </a>
+              <a href="#" className="hover:text-white transition-colors">
+                Discord
+              </a>
+            </div>
           </div>
           
-          <p className="text-xs text-text-faded max-w-3xl mx-auto">
-            XION is the first walletless L1 blockchain purpose-built for consumer adoption through chain abstraction. 
-            Raised $36M from Multicoin, Animoca, Circle, Hashkey, Arrington Capital, Spartan, and more.
-          </p>
-          
-          <p className="text-xs text-text-faded italic">
-            "Everyone, regardless of technical knowledge, should have access to true ownership."
-          </p>
+          <div className="border-t border-white/10 pt-8">
+            <p className="text-white/50 text-sm leading-relaxed max-w-4xl mx-auto mb-4">
+              XION is the first walletless L1 blockchain purpose-built for consumer adoption through chain abstraction. 
+              Raised $36M from Multicoin, Animoca, Circle, Hashkey, Arrington Capital, Spartan, and more.
+            </p>
+            
+            <p className="text-white/40 text-xs">
+              Everyone, regardless of technical knowledge, should have access to true ownership.
+            </p>
+          </div>
         </div>
       </footer>
     </div>
