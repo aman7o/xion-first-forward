@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ScrollReveal } from '@/components/ScrollReveal';
-import { Particles } from '@/components/Particles';
 import { CounterAnimation } from '@/components/CounterAnimation';
 import { ChevronDown, ExternalLink, Twitter, MessageCircle, Menu, X, Play } from 'lucide-react';
 import xionLogo from '@/assets/xion-logo-new.png';
 import { SmoothScrollLink } from '@/components/SmoothScrollLink';
 import investorsLogos from '@/assets/investors-logos.png';
+import consumerImage from '@/assets/consumer-blockchain.jpg';
 
 const XionPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden"
+         style={{ background: 'var(--gradient-hero)' }}>
       {/* Navigation Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg">
         <div className="container mx-auto px-8 py-8">
@@ -133,7 +134,11 @@ const XionPage = () => {
           }}
         />
         
-        <Particles />
+        {/* Aurora Effect */}
+        <div className="aurora-background"></div>
+        
+        {/* Video Background Overlay */}
+        <div className="absolute inset-0 bg-black/50 z-2"></div>
         
         <div className="container mx-auto px-8 relative z-10 max-w-7xl">
           <div className="flex items-center justify-between">
@@ -261,6 +266,18 @@ const XionPage = () => {
             </div>
             
             <div className="space-y-8">
+              {/* Consumer Image */}
+              <ScrollReveal delay={600}>
+                <div className="relative">
+                  <img 
+                    src={consumerImage} 
+                    alt="Consumer Blockchain Innovation" 
+                    className="w-full h-96 object-cover rounded-3xl border border-white/10"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-3xl"></div>
+                </div>
+              </ScrollReveal>
+              
               {/* Floating Stats Card */}
               <ScrollReveal delay={800}>
                 <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
@@ -419,42 +436,69 @@ const XionPage = () => {
 
       {/* MiCA Section */}
       <section id="mica" className="relative min-h-screen flex items-center justify-center py-32 bg-gradient-to-b from-gray-950 to-blue-950/20">
-        <div className="container mx-auto px-8 relative z-10 max-w-7xl text-center">
-          <ScrollReveal>
-            <h2 className="text-6xl md:text-7xl font-light leading-tight mb-12">
-              First <span className="font-black text-electric-blue">EU Title II</span>
-              <br />
-              compliant L1 blockchain
-            </h2>
-          </ScrollReveal>
-          
-          <ScrollReveal delay={200}>
-            <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed mb-16">
-              On March 13, 2025, XION made history at the New York Stock Exchange, announcing compliance 
-              with EU Title II regulations under the Markets in Crypto-Assets (MiCA) framework.
-            </p>
-          </ScrollReveal>
-          
-          <ScrollReveal delay={400}>
-            <blockquote className="text-4xl md:text-5xl font-light italic text-electric-blue mb-8 leading-tight">
-              "I have never been more excited for the future of this industry"
-            </blockquote>
-          </ScrollReveal>
-          
-          <ScrollReveal delay={600}>
-            <cite className="text-white/60 text-lg">— Burnt Banksy, speaking at the New York Stock Exchange</cite>
-          </ScrollReveal>
-          
-          <ScrollReveal delay={800}>
-            <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-3xl p-8 mt-16 max-w-2xl mx-auto">
-              <p className="text-yellow-400 font-medium text-lg mb-2">
-                First L1 on mainnet to release MiCA Title II whitepaper
-              </p>
-              <p className="text-white/70">
-                Opens access for 450M+ European users
-              </p>
+        <div className="container mx-auto px-8 relative z-10 max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            <div>
+              <ScrollReveal>
+                <h2 className="text-6xl md:text-7xl font-light leading-tight mb-12">
+                  First <span className="font-black text-electric-blue">EU Title II</span>
+                  <br />
+                  compliant L1 blockchain
+                </h2>
+              </ScrollReveal>
+              
+              <ScrollReveal delay={200}>
+                <p className="text-xl text-white/70 leading-relaxed mb-8">
+                  On March 13, 2025, XION made history at the New York Stock Exchange, announcing compliance 
+                  with EU Title II regulations under the Markets in Crypto-Assets (MiCA) framework.
+                </p>
+              </ScrollReveal>
+              
+              <ScrollReveal delay={400}>
+                <blockquote className="text-2xl md:text-3xl font-light italic text-electric-blue mb-6 leading-relaxed">
+                  "I have never been more excited for the future of this industry"
+                </blockquote>
+              </ScrollReveal>
+              
+              <ScrollReveal delay={600}>
+                <cite className="text-white/60 text-lg">— Burnt Banksy, speaking at the New York Stock Exchange</cite>
+              </ScrollReveal>
+              
+              <ScrollReveal delay={800}>
+                <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-3xl p-6 mt-8">
+                  <p className="text-yellow-400 font-medium text-lg mb-2">
+                    First L1 on mainnet to release MiCA Title II whitepaper
+                  </p>
+                  <p className="text-white/70">
+                    Opens access for 450M+ European users
+                  </p>
+                </div>
+              </ScrollReveal>
             </div>
-          </ScrollReveal>
+            
+            <div>
+              <ScrollReveal delay={1000}>
+                <div className="video-container">
+                  <div className="bg-black/80 rounded-3xl p-8 h-full flex flex-col justify-center items-center border border-white/10">
+                    <div className="text-center mb-6">
+                      <Play className="w-16 h-16 text-electric-blue mx-auto mb-4" />
+                      <h3 className="text-white font-medium text-lg mb-2">MiCA Compliance Announcement</h3>
+                      <p className="text-white/60 text-sm">Historic NYSE moment</p>
+                    </div>
+                    <Button 
+                      variant="outline"
+                      size="lg"
+                      className="bg-electric-blue/20 border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-black"
+                      onClick={() => window.open('https://x.com/burnt_xion/status/1903806222706618649', '_blank')}
+                    >
+                      <ExternalLink className="w-5 h-5 mr-2" />
+                      Watch on Twitter
+                    </Button>
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -486,17 +530,10 @@ const XionPage = () => {
                   </p>
                 </ScrollReveal>
               </div>
-            </div>
-            
-            <div>
+              
               <ScrollReveal delay={600}>
-                <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
-                  <div className="text-center mb-8">
-                    <div className="text-2xl font-light text-electric-blue mb-4">Powered by Circle</div>
-                    <p className="text-white/60 text-sm">Strategic partnership with the issuer of USDC</p>
-                  </div>
-                  
-                  <div className="space-y-4">
+                <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 mt-8 border border-white/10">
+                  <div className="space-y-3">
                     <div className="flex items-center space-x-3">
                       <div className="w-2 h-2 bg-electric-blue rounded-full"></div>
                       <span className="text-white/70">Familiar stablecoin payments</span>
@@ -509,10 +546,29 @@ const XionPage = () => {
                       <div className="w-2 h-2 bg-electric-blue rounded-full"></div>
                       <span className="text-white/70">Sustainable token economics</span>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-electric-blue rounded-full"></div>
-                      <span className="text-white/70">Seamless user experience</span>
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+            
+            <div>
+              <ScrollReveal delay={800}>
+                <div className="video-container">
+                  <div className="bg-black/80 rounded-3xl p-8 h-full flex flex-col justify-center items-center border border-white/10">
+                    <div className="text-center mb-6">
+                      <Play className="w-16 h-16 text-electric-blue mx-auto mb-4" />
+                      <h3 className="text-white font-medium text-lg mb-2">USDC Gas Integration</h3>
+                      <p className="text-white/60 text-sm">Powered by Circle partnership</p>
                     </div>
+                    <Button 
+                      variant="outline"
+                      size="lg"
+                      className="bg-electric-blue/20 border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-black"
+                      onClick={() => window.open('https://x.com/burnt_xion/status/1932452785297211758', '_blank')}
+                    >
+                      <ExternalLink className="w-5 h-5 mr-2" />
+                      Watch Demo
+                    </Button>
                   </div>
                 </div>
               </ScrollReveal>
@@ -523,32 +579,58 @@ const XionPage = () => {
 
       {/* Bybit Section */}
       <section id="bybit" className="relative min-h-screen flex items-center justify-center py-32 bg-gradient-to-b from-black to-gray-950">
-        <div className="container mx-auto px-8 relative z-10 max-w-7xl text-center">
-          <ScrollReveal>
-            <h2 className="text-6xl md:text-7xl font-light leading-tight mb-12">
-              First ever <span className="font-black text-electric-blue">Bybit EU</span>
-              <br />
-              Launchpool
-            </h2>
-          </ScrollReveal>
-          
-          <ScrollReveal delay={200}>
-            <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed mb-16">
-              On August 14, 2025, XION broke new ground once again, becoming the inaugural Launchpool project 
-              on Bybit's EU exchange following their MiCAR license approval.
-            </p>
-          </ScrollReveal>
-          
-          
-          <ScrollReveal delay={600}>
-            <blockquote className="text-2xl md:text-3xl font-light italic text-electric-blue mb-6 leading-relaxed">
-              "Today's launch with XION demonstrates how regulation can accelerate rather than hinder innovation"
-            </blockquote>
-          </ScrollReveal>
-          
-          <ScrollReveal delay={800}>
-            <cite className="text-white/60 text-lg">— Mazurka Zheng, CEO of Bybit EU</cite>
-          </ScrollReveal>
+        <div className="container mx-auto px-8 relative z-10 max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            <div>
+              <ScrollReveal>
+                <h2 className="text-6xl md:text-7xl font-light leading-tight mb-12">
+                  First ever <span className="font-black text-electric-blue">Bybit EU</span>
+                  <br />
+                  Launchpool
+                </h2>
+              </ScrollReveal>
+              
+              <ScrollReveal delay={200}>
+                <p className="text-xl text-white/70 leading-relaxed mb-8">
+                  On August 14, 2025, XION broke new ground once again, becoming the inaugural Launchpool project 
+                  on Bybit's EU exchange following their MiCAR license approval.
+                </p>
+              </ScrollReveal>
+              
+              <ScrollReveal delay={400}>
+                <blockquote className="text-2xl md:text-3xl font-light italic text-electric-blue mb-6 leading-relaxed">
+                  "Today's launch with XION demonstrates how regulation can accelerate rather than hinder innovation"
+                </blockquote>
+              </ScrollReveal>
+              
+              <ScrollReveal delay={600}>
+                <cite className="text-white/60 text-lg">— Mazurka Zheng, CEO of Bybit EU</cite>
+              </ScrollReveal>
+            </div>
+            
+            <div>
+              <ScrollReveal delay={800}>
+                <div className="video-container">
+                  <div className="bg-black/80 rounded-3xl p-8 h-full flex flex-col justify-center items-center border border-white/10">
+                    <div className="text-center mb-6">
+                      <Play className="w-16 h-16 text-electric-blue mx-auto mb-4" />
+                      <h3 className="text-white font-medium text-lg mb-2">Bybit EU Launchpool Launch</h3>
+                      <p className="text-white/60 text-sm">Historic regulatory milestone</p>
+                    </div>
+                    <Button 
+                      variant="outline"
+                      size="lg"
+                      className="bg-electric-blue/20 border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-black"
+                      onClick={() => window.open('https://x.com/burnt_xion/status/1955947636953055300', '_blank')}
+                    >
+                      <ExternalLink className="w-5 h-5 mr-2" />
+                      Watch Launch
+                    </Button>
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
         </div>
       </section>
       
@@ -577,7 +659,8 @@ const XionPage = () => {
           }}
         />
         
-        <Particles />
+        {/* Aurora Effect */}
+        <div className="aurora-background"></div>
         
         <div className="container mx-auto px-8 relative z-10 max-w-7xl text-center">
           <ScrollReveal>
