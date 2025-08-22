@@ -4,7 +4,7 @@ import { ScrollReveal } from '@/components/ScrollReveal';
 import { Particles } from '@/components/Particles';
 import { CounterAnimation } from '@/components/CounterAnimation';
 import { ChevronDown, ExternalLink, Twitter, MessageCircle, Menu, X, Play } from 'lucide-react';
-import xionLogo from '@/assets/xion-logo.png';
+import xionLogo from '@/assets/xion-logo-new.png';
 import { SmoothScrollLink } from '@/components/SmoothScrollLink';
 import investorsLogos from '@/assets/investors-logos.png';
 
@@ -539,24 +539,6 @@ const XionPage = () => {
             </p>
           </ScrollReveal>
           
-          <ScrollReveal delay={400}>
-            <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-12 border border-white/10 max-w-4xl mx-auto mb-16">
-              <div className="grid md:grid-cols-3 gap-8 text-center">
-                <div>
-                  <div className="text-3xl font-light text-electric-blue mb-2">60%</div>
-                  <div className="text-white/60 text-sm tracking-wide">XION Stakers APR</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-light text-electric-blue mb-2">36%</div>
-                  <div className="text-white/60 text-sm tracking-wide">MNT Stakers APR</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-light text-electric-blue mb-2">24%</div>
-                  <div className="text-white/60 text-sm tracking-wide">USDC Stakers APR</div>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
           
           <ScrollReveal delay={600}>
             <blockquote className="text-2xl md:text-3xl font-light italic text-electric-blue mb-6 leading-relaxed">
@@ -640,6 +622,7 @@ const XionPage = () => {
                 variant="outline"
                 size="lg"
                 className="bg-white/10 border-white/20 text-white hover:bg-white/20 px-8 py-4"
+                onClick={() => window.open('https://discord.gg/burnt', '_blank')}
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Join Discord
@@ -690,9 +673,6 @@ const XionPage = () => {
       <footer className="py-16 px-8 bg-black border-t border-white/10">
         <div className="container mx-auto text-center max-w-6xl">
           <div className="mb-8">
-            <p className="text-white/40 text-sm mb-4 tracking-wide">
-              Created for the XION 4th Weekly Content Competition • August 2025
-            </p>
             
             <div className="flex flex-wrap justify-center items-center space-x-8 text-sm text-white/60">
               <a href="https://xion.burnt.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
@@ -701,7 +681,7 @@ const XionPage = () => {
               <a href="https://twitter.com/burnt_xion" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                 Twitter
               </a>
-              <a href="#" className="hover:text-white transition-colors">
+              <a href="https://discord.gg/burnt" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                 Discord
               </a>
             </div>
