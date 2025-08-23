@@ -5,8 +5,6 @@ import { CounterAnimation } from '@/components/CounterAnimation';
 import { ChevronDown, ExternalLink, Twitter, MessageCircle, Menu, X, Play } from 'lucide-react';
 import xionLogo from '@/assets/xion-logo-new.png';
 import { SmoothScrollLink } from '@/components/SmoothScrollLink';
-import investorsLogos from '@/assets/investors-logos.png';
-import consumerImage from '@/assets/consumer-blockchain.jpg';
 
 const XionPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,7 +17,7 @@ const XionPage = () => {
         <div className="container mx-auto px-8 py-8">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <img src={xionLogo} alt="XION" className="h-8 w-auto" />
+              <img src={xionLogo} alt="XION" className="h-8 w-auto filter brightness-0 invert" />
             </div>
             
             <nav className="hidden lg:flex items-center space-x-16">
@@ -105,7 +103,7 @@ const XionPage = () => {
       </header>
 
       {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
@@ -137,12 +135,9 @@ const XionPage = () => {
         {/* Aurora Effect */}
         <div className="aurora-background"></div>
         
-        {/* Video Background Overlay */}
-        <div className="absolute inset-0 bg-black/50 z-2"></div>
-        
         <div className="container mx-auto px-8 relative z-10 max-w-7xl">
-          <div className="flex items-center justify-between">
-            <div className="flex-1 pr-8">
+          <div className="flex items-center justify-center">
+            <div className="text-center">
               <ScrollReveal delay={0.8}>
                 <h1 className="font-display text-7xl md:text-8xl lg:text-[9rem] font-light leading-none tracking-tight mb-12">
                   A History of
@@ -152,46 +147,9 @@ const XionPage = () => {
               </ScrollReveal>
               
               <ScrollReveal delay={1.2}>
-                <p className="text-2xl md:text-3xl text-accent-gray max-w-2xl mb-20 font-light leading-relaxed">
+                <p className="text-2xl md:text-3xl text-accent-gray max-w-2xl mx-auto mb-20 font-light leading-relaxed">
                   Being first is what we're known for
                 </p>
-              </ScrollReveal>
-
-              <ScrollReveal delay={1.6}>
-                <div className="flex items-center space-x-4">
-                  <Button 
-                    variant="outline" 
-                    size="lg"
-                    className="bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm"
-                  >
-                    <Play className="w-5 h-5 mr-2" />
-                    Watch Episode
-                  </Button>
-                </div>
-              </ScrollReveal>
-            </div>
-            
-            {/* Floating Info Card */}
-            <div className="hidden xl:block">
-              <ScrollReveal delay={1.4}>
-                <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 max-w-sm border border-white/20 ml-12">
-                  <div className="mb-6">
-                    <img src={xionLogo} alt="XION" className="h-12 w-auto opacity-90" />
-                  </div>
-                  <h3 className="text-white font-medium mb-3 text-lg">
-                    Pioneering breakthrough innovations
-                  </h3>
-                  <p className="text-white/70 text-sm leading-relaxed mb-6">
-                    From consumer blockchain to chain abstraction, bringing Web3 to mainstream audiences.
-                  </p>
-                  <Button 
-                    variant="outline"
-                    size="sm" 
-                    className="w-full bg-electric-blue/20 border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-black"
-                  >
-                    Explore Journey
-                  </Button>
-                </div>
               </ScrollReveal>
             </div>
           </div>
@@ -266,17 +224,6 @@ const XionPage = () => {
             </div>
             
             <div className="space-y-8">
-              {/* Consumer Image */}
-              <ScrollReveal delay={600}>
-                <div className="relative">
-                  <img 
-                    src={consumerImage} 
-                    alt="Consumer Blockchain Innovation" 
-                    className="w-full h-96 object-cover rounded-3xl border border-white/10"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-3xl"></div>
-                </div>
-              </ScrollReveal>
               
               {/* Floating Stats Card */}
               <ScrollReveal delay={800}>
@@ -667,25 +614,15 @@ const XionPage = () => {
             <h2 className="text-7xl md:text-8xl lg:text-9xl font-light leading-tight mb-12">
               The next first
               <br />
-              <span className="font-black text-electric-blue">is coming</span>
+              <span className="font-black text-electric-blue">is evolving</span>
             </h2>
           </ScrollReveal>
           
           <ScrollReveal delay={200}>
             <p className="text-2xl md:text-3xl text-white/80 max-w-4xl mx-auto leading-relaxed mb-16">
               Every breakthrough was just the beginning. Every first led to the next innovation.
-            </p>
-          </ScrollReveal>
-          
-          <ScrollReveal delay={400}>
-            <div className="text-5xl md:text-6xl font-black text-electric-blue mb-12 animate-pulse">
-              [REDACTED] LAUNCH INCOMING
-            </div>
-          </ScrollReveal>
-          
-          <ScrollReveal delay={600}>
-            <p className="text-xl text-white/70 mb-16">
-              XION has built a history of firsts. Soon, we'll add another first to the list.
+              <br />
+              XION has built a history of firsts. The pattern speaks for itself.
             </p>
           </ScrollReveal>
           
@@ -736,12 +673,6 @@ const XionPage = () => {
         <div className="container mx-auto text-center max-w-6xl">
           <ScrollReveal>
             <h3 className="text-lg font-light text-white/60 mb-8 tracking-[0.3em] uppercase">Backed by the Best</h3>
-          </ScrollReveal>
-          
-          <ScrollReveal delay={200}>
-            <div className="flex justify-center items-center opacity-40 hover:opacity-60 transition-opacity">
-              <img src={investorsLogos} alt="Top-tier investors" className="max-h-12" />
-            </div>
           </ScrollReveal>
           
           <ScrollReveal delay={400}>
