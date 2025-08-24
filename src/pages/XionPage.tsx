@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { CounterAnimation } from '@/components/CounterAnimation';
-import { ChevronDown, ExternalLink, Twitter, MessageCircle, Menu, X, Play } from 'lucide-react';
+import { ChevronDown, ExternalLink, Twitter, Menu, X } from 'lucide-react';
 import xionLogo from '@/assets/xion-logo-new.png';
 import { SmoothScrollLink } from '@/components/SmoothScrollLink';
 
@@ -209,7 +209,7 @@ const XionPage = () => {
                 
                 <ScrollReveal delay={400}>
                   <p>
-                    XION's consumer-first approach attracted over 100+ global brands including Uber, BMW, Amazon Prime, 
+                    XION's consumer-first approach attracted over 200+ global brands including Uber, BMW, Amazon Prime, 
                     The North Face, and Temu.
                   </p>
                 </ScrollReveal>
@@ -237,7 +237,7 @@ const XionPage = () => {
                     </div>
                     <div className="text-center">
                       <div className="text-3xl font-light text-electric-blue mb-2">
-                        <CounterAnimation end={100} suffix="+" />
+                        <CounterAnimation end={200} suffix="+" />
                       </div>
                       <div className="text-sm text-white/60 tracking-wide">Global Brands</div>
                     </div>
@@ -249,9 +249,9 @@ const XionPage = () => {
                     </div>
                     <div className="text-center">
                       <div className="text-3xl font-light text-electric-blue mb-2">
-                        <CounterAnimation end={70} suffix="K+" />
+                        <CounterAnimation end={50} suffix="K+" />
                       </div>
-                      <div className="text-sm text-white/60 tracking-wide">Daily Active</div>
+                      <div className="text-sm text-white/60 tracking-wide">Monthly Active</div>
                     </div>
                   </div>
                 </div>
@@ -316,13 +316,14 @@ const XionPage = () => {
           
           <ScrollReveal delay={1000}>
             <div className="text-center">
-              <Button 
-                variant="outline"
-                size="lg"
-                className="bg-electric-blue/10 border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-black"
+              <a 
+                href="https://prometheansaga.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-electric-blue/10 border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-black h-14 rounded-xl px-8 text-lg"
               >
                 Experience Walletless
-              </Button>
+              </a>
             </div>
           </ScrollReveal>
         </div>
@@ -427,20 +428,7 @@ const XionPage = () => {
               <ScrollReveal delay={1000}>
                 <div className="video-container">
                   <div className="bg-black/80 rounded-3xl p-8 h-full flex flex-col justify-center items-center border border-white/10">
-                    <div className="text-center mb-6">
-                      <Play className="w-16 h-16 text-electric-blue mx-auto mb-4" />
-                      <h3 className="text-white font-medium text-lg mb-2">MiCA Compliance Announcement</h3>
-                      <p className="text-white/60 text-sm">Historic NYSE moment</p>
-                    </div>
-                    <Button 
-                      variant="outline"
-                      size="lg"
-                      className="bg-electric-blue/20 border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-black"
-                      onClick={() => window.open('https://x.com/burnt_xion/status/1903806222706618649', '_blank')}
-                    >
-                      <ExternalLink className="w-5 h-5 mr-2" />
-                      Watch on Twitter
-                    </Button>
+                    <img src={xionLogo} alt="XION" className="h-24 w-auto filter brightness-0 invert" />
                   </div>
                 </div>
               </ScrollReveal>
@@ -502,20 +490,7 @@ const XionPage = () => {
               <ScrollReveal delay={800}>
                 <div className="video-container">
                   <div className="bg-black/80 rounded-3xl p-8 h-full flex flex-col justify-center items-center border border-white/10">
-                    <div className="text-center mb-6">
-                      <Play className="w-16 h-16 text-electric-blue mx-auto mb-4" />
-                      <h3 className="text-white font-medium text-lg mb-2">USDC Gas Integration</h3>
-                      <p className="text-white/60 text-sm">Powered by Circle partnership</p>
-                    </div>
-                    <Button 
-                      variant="outline"
-                      size="lg"
-                      className="bg-electric-blue/20 border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-black"
-                      onClick={() => window.open('https://x.com/burnt_xion/status/1932452785297211758', '_blank')}
-                    >
-                      <ExternalLink className="w-5 h-5 mr-2" />
-                      Watch Demo
-                    </Button>
+                    <img src={xionLogo} alt="XION" className="h-24 w-auto filter brightness-0 invert" />
                   </div>
                 </div>
               </ScrollReveal>
@@ -559,20 +534,7 @@ const XionPage = () => {
               <ScrollReveal delay={800}>
                 <div className="video-container">
                   <div className="bg-black/80 rounded-3xl p-8 h-full flex flex-col justify-center items-center border border-white/10">
-                    <div className="text-center mb-6">
-                      <Play className="w-16 h-16 text-electric-blue mx-auto mb-4" />
-                      <h3 className="text-white font-medium text-lg mb-2">Bybit EU Launchpool Launch</h3>
-                      <p className="text-white/60 text-sm">Historic regulatory milestone</p>
-                    </div>
-                    <Button 
-                      variant="outline"
-                      size="lg"
-                      className="bg-electric-blue/20 border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-black"
-                      onClick={() => window.open('https://x.com/burnt_xion/status/1955947636953055300', '_blank')}
-                    >
-                      <ExternalLink className="w-5 h-5 mr-2" />
-                      Watch Launch
-                    </Button>
+                    <img src={xionLogo} alt="XION" className="h-24 w-auto filter brightness-0 invert" />
                   </div>
                 </div>
               </ScrollReveal>
@@ -636,16 +598,6 @@ const XionPage = () => {
               >
                 <Twitter className="w-5 h-5 mr-2" />
                 Follow @burnt_xion
-              </Button>
-              
-              <Button 
-                variant="outline"
-                size="lg"
-                className="bg-white/10 border-white/20 text-white hover:bg-white/20 px-8 py-4"
-                onClick={() => window.open('https://discord.gg/burnt', '_blank')}
-              >
-                <MessageCircle className="w-5 h-5 mr-2" />
-                Join Discord
               </Button>
               
               <Button 
